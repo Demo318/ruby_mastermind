@@ -1,0 +1,12 @@
+-IN PROGRESS-
+
+-NEXT UP-
+#Define proper feedback at the end of each turn & at end of game for player.
+#progressively draw board, showing easy-to-read indicators for feedback alongside guesses.
+#ask "play again"?
+
+
+
+
+-BACKLOG-
+#have AI interact with feedback & make better decisions.
