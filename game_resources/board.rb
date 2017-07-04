@@ -23,7 +23,7 @@ class Board
   def draw_feedback(feedback_arr)
     feedback_arr.each_with_index do |item, ind|
       case item
-      when 0 then feedback_arr[ind] = "O"
+      when 0 then feedback_arr[ind] = "X"
       when 1 then feedback_arr[ind] = "#"
       when 2 then feedback_arr[ind] = "!"
       end
@@ -41,8 +41,9 @@ class Board
   end
 
   def draw_board
-    divider = "------------------"
     real_rows = @guesses.length
+
+    divider = "------------------"
     num_blank_rows = 10 - real_rows
     num_blank_rows.times { draw_blank_row(divider) }
 
@@ -55,6 +56,13 @@ class Board
       counter -= 1
     end
     puts divider
+    draw_key if real_rows < 2
+  end
+
+  def draw_key
+    puts "  Right Spot: #{draw_feedback([2])}"
+    puts "Right Number: #{draw_feedback([1])}"
+    puts "Wrong Number: #{draw_feedback([0])}"
   end
 
 end

@@ -12,7 +12,7 @@ module Player
     digits
   end
 
-  def guess_code(prev_guesses_hash, prev_feedback_hash) #returns array of four digits
+  def guess_code(prev_guesses_hash, prev_feedback_hash, brain) #returns array of four digits
     puts "Try to guess the secret code that your oponent has set."
     move_on = false
     until move_on == true do
