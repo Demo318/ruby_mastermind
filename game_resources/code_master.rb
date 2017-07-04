@@ -4,20 +4,24 @@ require_relative 'player.rb'
 
 
 class CodeMaster
-  attr_reader :role_title, :mind
+  attr_reader :role_title, :mind, :name
 
   def initialize(name)
     @role_title = "Code Master"
+    @name = name
     confirm = nil
     while confirm != "y" && confirm != "n"
       puts "Would you like to play as the Code Master? (y/n)"
       confirm = gets.chomp
     end
+    sleep(1)
     if confirm == "y"
       self.extend Player
-      puts "Great, #{name}, you will be the Code Master for this game."
+      puts "Great, #{@name}, you will play the Code Master for this game."
       @mind = "player"
     else
+      @name = "ROBOT"
+      puts "Great, #{@name} will play the Code Master for this game."
       self.extend AI
       @mind = "ai"
     end

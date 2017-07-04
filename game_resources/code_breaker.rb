@@ -8,11 +8,11 @@ class CodeBreaker
     @name = name
     if other_role == "player"
       self.extend AI
-      puts "Great, ROBOT, you will be the Code Breaker for this game."
+      puts "And ROBOT will play the Code Breaker."
       @name = "ROBOT"
     else
       self.extend Player
-      puts "Great, #{@name}, you will be the Code Breaker for this game."
+      puts "And #{@name}, you will play the Code Breaker."
     end
   end
 

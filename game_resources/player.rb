@@ -1,7 +1,8 @@
 module Player
 
   def set_code
-    puts "It's time to set a secret code for your oponent to guess."
+    puts "You will need to set a secret code for your oponent to guess."
+    sleep(1)
     move_on = false
     until move_on == true do
       digits = grab_digits
@@ -12,7 +13,7 @@ module Player
   end
 
   def guess_code(prev_guesses_hash, prev_feedback_hash) #returns array of four digits
-    puts "It's time to guess the secret code that your oponent has set."
+    puts "Try to guess the secret code that your oponent has set."
     move_on = false
     until move_on == true do
       digits = grab_digits

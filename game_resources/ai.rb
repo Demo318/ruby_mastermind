@@ -18,19 +18,8 @@ module AI
       num = rand(1..6)
       guess_code << num if guess_code.include?(num) == false
     end
+    sleep(1)
     guess_code
   end
-
-end
-
-class Tester
-  attr_reader :secret_code
-
-
-  def initialize
-    Class.include AI
-    @secret_code = set_code
-  end
-
 
 end
