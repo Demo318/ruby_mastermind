@@ -33,8 +33,10 @@ class Game
       puts "Guesses #{@board.guesses}"
       puts "feedback #{@board.feedback}"
       win = victory?(@board.feedback[counter.to_s], @board.winning_feedback)
+      @board.draw_board
       counter += 1
     end
+    puts "I'm sorry #{@code_breaker.name}, you have lost the game." unless win
   end
 
 end
