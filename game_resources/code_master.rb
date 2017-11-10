@@ -30,16 +30,18 @@ class CodeMaster
   def check_code(guess, secret_code, feedback_opts)
     feedback = []
     guess.each_with_index do |item, ind|
-      if secret_code.include?(guess[ind]) == true
-        feedback << feedback_opts[:right_num] unless guess[ind] == secret_code[ind]
-        if guess[ind] == secret_code[ind]
+      if secret_code.include?(item)
+        if item == secret_code[ind]
           feedback << feedback_opts[:right_spot]
+        else
+          feedback << feedback_opts[:right_num]
         end
       else
         feedback << feedback_opts[:wrong_num]
       end
     end
-    feedback.sort!
+    # feedback.sort!
+    feedback
   end
 
 end

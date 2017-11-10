@@ -28,7 +28,7 @@ class Board
       when 2 then feedback_arr[ind] = "!"
       end
     end
-    feedback_arr = feedback_arr.sort.join
+    feedback_arr = feedback_arr.join
   end
 
   def draw_answer(answer_arr)
