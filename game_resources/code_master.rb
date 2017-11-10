@@ -27,17 +27,17 @@ class CodeMaster
     end
   end
 
-  def check_code(guess, secret_code, feedback_opts)
+  def check_code(guess, secret_code)
     feedback = []
     guess.each_with_index do |item, ind|
       if secret_code.include?(item)
         if item == secret_code[ind]
-          feedback << feedback_opts[:right_spot]
+          feedback << :right_spot
         else
-          feedback << feedback_opts[:right_num]
+          feedback << :right_num
         end
       else
-        feedback << feedback_opts[:wrong_num]
+        feedback << :wrong_num
       end
     end
     # feedback.sort!

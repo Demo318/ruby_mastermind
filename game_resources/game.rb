@@ -33,7 +33,7 @@ class Game
     win = false
     while counter < 10 && win == false do
       @board.guesses[counter] = @code_breaker.guess_code(@board.guesses, @board.feedback)
-      @board.feedback[counter] = @code_master.check_code(@board.guesses[counter], @board.secret_code, @board.feedback_opts)
+      @board.feedback[counter] = @code_master.check_code(@board.guesses[counter], @board.secret_code)
       win = victory?(@board.feedback[counter], @board.winning_feedback)
       @board.draw_board
       counter += 1
