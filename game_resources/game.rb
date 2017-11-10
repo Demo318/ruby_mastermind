@@ -1,10 +1,8 @@
 require_relative 'board.rb'
 require_relative 'code_master.rb'
 require_relative 'code_breaker.rb'
-require_relative 'endgame.rb'
 
 class Game
-  include EndGame
 
   def initialize
     puts "Welcome to MASTERMIND"
@@ -34,7 +32,7 @@ class Game
     while counter < 10 && win == false do
       @board.guesses[counter] = @code_breaker.guess_code(@board.guesses, @board.feedback)
       @board.feedback[counter] = @code_master.check_code(@board.guesses[counter], @board.secret_code)
-      win = victory?(@board.feedback[counter], @board.winning_feedback)
+      win = @board.feedback[counter] == @board.winning_feedback
       @board.draw_board
       counter += 1
       puts "#{10 - counter} attempts reamining"
