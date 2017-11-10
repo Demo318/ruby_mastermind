@@ -12,24 +12,15 @@ module Player
     digits
   end
 
-  def guess_code(prev_guesses_hash, prev_feedback_hash) #returns array of four digits
+  def guess_code(prev_guesses, prev_feedback) #returns array of four digits
     puts "Try to guess the secret code that your oponent has set."
     move_on = false
     until move_on == true do
       digits = grab_digits
-      verified = confirm_digits(digits) if verify_digits(digits) && not_prev_digits(digits, prev_guesses_hash)
+      verified = confirm_digits(digits) if verify_digits(digits)
       move_on = true if verified
     end
     digits
-  end
-
-  def not_prev_digits(current, pre_hash)
-    not_prev = true
-    pre_hash.each do |key, item|
-      not_prev = false if current == item
-    end
-    puts "You've already entered that combination." if not_prev == false
-    not_prev
   end
 
   def grab_digits
