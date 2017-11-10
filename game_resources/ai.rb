@@ -13,16 +13,41 @@ module AI
   end
 
   def guess_code(prev_guesses_hash, prev_feedback_hash) #returns array of four digits
-    candidate_digits = (1..6).to_a
+    sleep(1)
     if prev_feedback_hash.length > 0
-      prev_feedback_hash[0].each_with_index do |item, idx|
+      return educated_guess(prev_guesses_hash, prev_feedback_hash)
+    else
+      return first_turn_guess()
+    end
+  end
+
+  def first_turn_guess()
+    guess_code = Array.new
+    while guess_code.length < 4
+      num = rand(1..6)
+      guess_code << num if guess_code.include?(num) == false
+    end
+    guess_code
+  end
+
+  def educated_guess(prev_guesses_hash, prev_feedback_hash)
+    candidate_digits = (1..6).to_a    
+    prev_feedback_hash.each_with_index do |feedback, turn_index|
+      feedback.each_with_index do |item, idx|
         if item == "X"
-          candidate_digits = candidate_digits.reject { |i| i == prev_guesses_hash[0][idx] }
+          candidate_digits = candidate_digits.reject { |i| i == prev_guesses_hash[turn_index][idx] }
         end
       end
     end
-    puts candidate_digits # TODO remove
-    guess_code = Array.new
+    guess_code = build_guess(prev_guesses_hash, prev_feedback_hash, candidate_digits)
+    while prev_guesses_hash.include?(guess_code)
+      guess_code = build_guess(prev_guesses_hash, prev_feedback_hash, candidate_digits)
+    end
+    guess_code
+  end
+
+  def build_guess(prev_guesses_hash, prev_feedback_hash, candidate_digits)
+    guess_code = Array.new    
     while guess_code.length < 4
       if prev_feedback_hash.length > 0
         last_turn = (prev_feedback_hash.length-1)
@@ -33,13 +58,11 @@ module AI
             guess_code << candidate_digits.sample
           end
         end
-  
       else
         num = candidate_digits.sample
         guess_code << num if guess_code.include?(num) == false
       end
     end
-    sleep(1)
     guess_code
   end
 
