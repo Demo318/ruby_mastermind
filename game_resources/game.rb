@@ -40,8 +40,11 @@ class Game
       puts "#{10 - counter} attempts reamining"
       sleep(1)
     end
-    puts "#{@code_master.name} wins! #{@code_breaker.name} failed to break the code." unless win
-    puts "#{@code_breaker.name} wins! He has broken #{@code_master.name}'s code." if win
+    if win
+      puts "#{@code_breaker.name} wins! He has broken #{@code_master.name}'s code."
+    else
+      puts "#{@code_master.name} wins! #{@code_breaker.name} failed to break the code."
+    end
   end
 
 end
