@@ -32,9 +32,9 @@ class Game
     counter = 0
     win = false
     while counter < 10 && win == false do
-      @board.guesses[counter.to_s] = @code_breaker.guess_code(@board.guesses, @board.feedback, @code_breaker.brain)
-      @board.feedback[counter.to_s] = @code_master.check_code(@board.guesses[counter.to_s], @board.secret_code, @board.feedback_opts)
-      win = victory?(@board.feedback[counter.to_s], @board.winning_feedback)
+      @board.guesses[counter] = @code_breaker.guess_code(@board.guesses, @board.feedback, @code_breaker.brain)
+      @board.feedback[counter] = @code_master.check_code(@board.guesses[counter], @board.secret_code, @board.feedback_opts)
+      win = victory?(@board.feedback[counter], @board.winning_feedback)
       @board.draw_board
       counter += 1
       puts "#{10 - counter} attempts reamining"

@@ -15,18 +15,17 @@ module AI
   def guess_code(prev_guesses_hash, prev_feedback_hash, ai_brain) #returns array of four digits
     candidate_digits = (1..6).to_a
     if prev_feedback_hash.length > 0
-      # why quoted?
-      prev_feedback_hash["0"].each_with_index do |item, idx|
+      prev_feedback_hash[0].each_with_index do |item, idx|
         if item == "X"
-          candidate_digits = candidate_digits.reject { |i| i == prev_guesses_hash["0"][idx] }
+          candidate_digits = candidate_digits.reject { |i| i == prev_guesses_hash[0][idx] }
         end
       end
     end
-    puts candidate_digits
+    puts candidate_digits # TODO remove
     guess_code = Array.new
     while guess_code.length < 4
       if prev_feedback_hash.length > 0
-        last_turn = (prev_feedback_hash.length-1).to_s
+        last_turn = (prev_feedback_hash.length-1)
         prev_feedback_hash[last_turn].each_with_index do |item, idx|
           if item == "!"
             guess_code << prev_guesses_hash[last_turn][idx]

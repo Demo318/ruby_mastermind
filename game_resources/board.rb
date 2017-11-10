@@ -9,8 +9,8 @@ class Board
   @@feedback_opts = {"wrong_num":0, "right_num":1, "right_spot":2}
 
   def initialize
-    @guesses = Hash.new
-    @feedback = Hash.new
+    @guesses = Array.new
+    @feedback = Array.new
     @secret_code = Array.new
     @winning_feedback = Array.new
     4.times { @winning_feedback << @@feedback_opts[:right_spot] }
@@ -49,8 +49,8 @@ class Board
 
     counter = real_rows - 1
     real_rows.times do
-      guess_arr = @guesses[counter.to_s]
-      feedback_arr = @feedback[counter.to_s]
+      guess_arr = @guesses[counter]
+      feedback_arr = @feedback[counter]
       puts divider
       puts "| #{draw_answer(guess_arr)} | #{draw_feedback(feedback_arr)} |"
       counter -= 1
