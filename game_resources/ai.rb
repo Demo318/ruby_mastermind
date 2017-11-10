@@ -12,7 +12,7 @@ module AI
     secret_code
   end
 
-  def guess_code(prev_guesses_hash, prev_feedback_hash, ai_brain) #returns array of four digits
+  def guess_code(prev_guesses_hash, prev_feedback_hash) #returns array of four digits
     candidate_digits = (1..6).to_a
     if prev_feedback_hash.length > 0
       prev_feedback_hash[0].each_with_index do |item, idx|
